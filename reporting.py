@@ -7,15 +7,22 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 import os
+from diagnostics import load_data
+from diagnostics import model_predictions
+from sklearn import metrics
+import logging
 
 
+logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
+logger = logging.getLogger()
 
 ###############Load config.json and get path variables
 with open('config.json','r') as f:
     config = json.load(f) 
 
 dataset_csv_path = os.path.join(config['output_folder_path']) 
-
+test_data_path = os.path.join(config['test_data_path'])
+output_model_path = os.path.join(config['output_model_path'])
 
 
 
@@ -23,8 +30,20 @@ dataset_csv_path = os.path.join(config['output_folder_path'])
 def score_model():
     #calculate a confusion matrix using the test data and the deployed model
     #write the confusion matrix to the workspace
+    df_data, X, y = load_data()
+    y_pred = model_predictions(X)
+    logger.info(f"y_pred: {y_pred}")
+    cm = metrics.confusion_matrix(y, y_pred)
 
-
+    _ = sns.heatmap(cm)
+    plt.title(f'Confusion Matrix')
+    plt.ylabel('Actual')
+    plt.xlabel('Predicted')
+    # write the confusion matrix to the workspace
+    fig = os.path.join(output_model_path, 'confusionmatrix.png')
+    plt.savefig(fig)
+    
+    return
 
 
 
