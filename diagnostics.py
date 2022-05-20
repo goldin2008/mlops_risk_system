@@ -13,9 +13,9 @@ import subprocess
 with open('config.json','r') as f:
     config = json.load(f) 
 
-dataset_csv_path = os.path.join(config['output_folder_path']) 
+output_folder_path = os.path.join(config['output_folder_path']) 
 test_data_path = os.path.join(config['test_data_path']) 
-prod_deploy_path = os.path.join(config['prod_deployment_path'])
+prod_deployment_path = os.path.join(config['prod_deployment_path'])
 
 ##################Function to get data
 def load_data(file_path):
@@ -28,7 +28,7 @@ def load_data(file_path):
 ##################Function to get model predictions
 def model_predictions(X):
     #read the deployed model and a test dataset, calculate predictions
-    model_path = os.path.join(prod_deploy_path, "trainedmodel.pkl")
+    model_path = os.path.join(prod_deployment_path, "trainedmodel.pkl")
     with open(model_path, 'rb') as file:
         model = pickle.load(file)
     
