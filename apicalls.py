@@ -15,13 +15,13 @@ output_model_path = os.path.join(config['output_model_path'])
 #Call each API endpoint and store the responses
 #### Request module solution####
 response1 = requests.get(f'{URL}/prediction?filename=testdata.csv').content #put an API call here
-response2 = requests.get(f'{URL}/scoring').content #put an API call here
+response2 = requests.get(f'{URL}/scoring?filename=testdata.csv').content #put an API call here
 response3 = requests.get(f'{URL}/summarystats?filename=testdata.csv').content #put an API call here
 response4 = requests.get(f'{URL}/diagnostics?filename=testdata.csv').content #put an API call here
 
 #### Command-line solution####
 response5=subprocess.run(['curl', '127.0.0.1:8000/prediction?filename=testdata.csv'],capture_output=True).stdout
-response6=subprocess.run(['curl', '127.0.0.1:8000/scoring'],capture_output=True).stdout
+response6=subprocess.run(['curl', '127.0.0.1:8000/scoring?filename=testdata.csv'],capture_output=True).stdout
 response7=subprocess.run(['curl', '127.0.0.1:8000/summarystats?filename=testdata.csv'],capture_output=True).stdout
 response8=subprocess.run(['curl', '127.0.0.1:8000/diagnostics?filename=testdata.csv'],capture_output=True).stdout
 

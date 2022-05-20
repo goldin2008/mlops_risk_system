@@ -69,7 +69,7 @@ def diag():
     outdated = diagnostics.outdated_packages_list()
 
     diag_res = "Missing Data: \n{} \n\nExe Time:\nIngestion:{} \nTraining:{} \n\nOutdated Packages:\n{}".format(missing, exe_time[0], exe_time[1], outdated)
-    return diag_res #add return value for all diagnostics
+    return str(diag_res) #add return value for all diagnostics
 
 if __name__ == "__main__":    
     app.run(host='0.0.0.0', port=8000, debug=True, threaded=True)
