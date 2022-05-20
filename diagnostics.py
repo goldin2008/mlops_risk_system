@@ -18,9 +18,8 @@ test_data_path = os.path.join(config['test_data_path'])
 prod_deploy_path = os.path.join(config['prod_deployment_path'])
 
 ##################Function to get data
-def load_data():
-    file_name = os.path.join(test_data_path, 'testdata.csv')
-    df_data = pd.read_csv(file_name)
+def load_data(file_path):
+    df_data = pd.read_csv(file_path)
     df = df_data.copy().drop("corporation", axis=1)
     y = df["exited"]
     X = df.drop("exited", axis=1)
@@ -58,9 +57,8 @@ def execution_time():
 ##################Function to check dependencies
 def outdated_packages_list():
     #get a list of 
-    outdated = subprocess.check_output(
-        ['pip', 'list', '--outdated']).decode('utf-8')
-    return outdated    
+    outdated = subprocess.check_output(['pip', 'list', '--outdated']).decode('utf-8')
+    return str(outdated)    
 
 ##################Function to check missing data
 def missing_data(df):
@@ -68,7 +66,8 @@ def missing_data(df):
     return na_per
 
 if __name__ == '__main__':
-    df_data, X, y = load_data()
+    file_path = os.path.join(test_data_path, 'testdata.csv')
+    df_data, X, y = load_data(file_path)
     y_pred = model_predictions(X)
     print(f"y_pred: {y_pred}")
 
