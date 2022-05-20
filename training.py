@@ -12,8 +12,8 @@ import json
 with open('config.json','r') as f:
     config = json.load(f) 
 
-dataset_csv_path = os.path.join(config['output_folder_path']) 
-model_path = os.path.join(config['output_model_path']) 
+output_folder_path = os.path.join(config['output_folder_path']) 
+output_model_path = os.path.join(config['output_model_path']) 
 
 
 #################Function for training the model
@@ -27,7 +27,7 @@ def train_model():
                     warm_start=False)
     
     #fit the logistic regression to your data  
-    df = pd.read_csv(os.path.join(dataset_csv_path, "finaldata.csv"))
+    df = pd.read_csv(os.path.join(output_folder_path, "finaldata.csv"))
     # encode corporation code to numeric value
     df['corporation'] = df['corporation'].apply(lambda x: sum(bytearray(x, 'utf-8')))
     df = df.drop("corporation", axis=1)
