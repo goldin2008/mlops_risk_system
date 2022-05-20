@@ -20,17 +20,18 @@ logger = logging.getLogger()
 with open('config.json','r') as f:
     config = json.load(f) 
 
-dataset_csv_path = os.path.join(config['output_folder_path']) 
+output_folder_path = os.path.join(config['output_folder_path']) 
 test_data_path = os.path.join(config['test_data_path'])
 output_model_path = os.path.join(config['output_model_path'])
 
 
 
 ##############Function for reporting
-def score_model():
+def score_model(filename):
     #calculate a confusion matrix using the test data and the deployed model
     #write the confusion matrix to the workspace
-    df_data, X, y = load_data()
+    file_path = os.path.join(test_data_path, filename)
+    df_data, X, y = load_data(file_path)
     y_pred = model_predictions(X)
     logger.info(f"y_pred: {y_pred}")
     cm = metrics.confusion_matrix(y, y_pred)
@@ -43,9 +44,9 @@ def score_model():
     fig = os.path.join(output_model_path, 'confusionmatrix.png')
     plt.savefig(fig)
     
-    return
+    return score
 
 
 
 if __name__ == '__main__':
-    score_model()
+    score = score_model()
