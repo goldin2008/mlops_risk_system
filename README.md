@@ -1,6 +1,10 @@
 # mlops_risk_system
 
 # ML_DevOps_DynamicRiskAssessmentSystem
+https://github.com/marcusholmgren/dynamic-risk-assessment-system
+https://github.com/leouchoa/dynamic_risk_assessment_system
+https://github.com/ibrahim-sheriff/Dynamic-Risk-Assessment-System
+https://github.com/goldin2008/mlops_risk_
 
 ## Objective
 
