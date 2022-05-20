@@ -26,8 +26,8 @@ def score_model():
 
     # Take trained model
     model_path = os.path.join(output_model_path, "trainedmodel.pkl")
-    with open(model_path, 'rb') as file:
-        model = pickle.load(file)
+    with open(model_path, 'rb') as f:
+        model = pickle.load(f)
 
     test_df = pd.read_csv(os.path.join(test_data_path, 'testdata.csv'))
 
@@ -38,8 +38,9 @@ def score_model():
     score = metrics.f1_score(y_test, y_pred)
 
     score_path = os.path.join(output_model_path, "latestscore.txt")
-    with open(score_path, 'w') as file_write:
-        file_write.write(str(score))
+    with open(score_path, 'w') as f:
+        f.write(str(score))
+
     return score
 
 if __name__ == "__main__":
