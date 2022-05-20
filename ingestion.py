@@ -19,44 +19,24 @@ input_folder_path = config['input_folder_path']
 output_folder_path = config['output_folder_path']
 
 
-
 #############Function for data ingestion
 def merge_multiple_dataframe():
-    """
-    Merge multiple dataframes into one dataframe
-    :return: None
-    """
     #check for datasets, compile them together, and write to an output file
-    col_names = ['corporation', 'lastmonth_activity', 'lastyear_activity',
-                 'number_of_employees', 'exited']
-
-    df_list = pd.DataFrame(columns=col_names)
-
-    logger.info("reading and merging all found .csv files")
+    df = pd.DataFrame()
 
     # recursivly search direcotries and read .csv files.
-    r_path = os.path.join(os.getcwd(), input_folder_path)
+    datasets = glob.glob(f'{input_folder_path}/*.csv', recursive=True)
+    df = pd.concat(map(pd.read_csv, datasets))
 
-    datasets = glob.glob(f'{r_path}/**/*.csv', recursive=True)
-    df_list = pd.concat(map(pd.read_csv, datasets))
+    df_final = df.drop_duplicates()
+    df_final.to_csv(os.path.join(output_folder_path, 'finaldata.csv'), index=False)
 
-    logger.info("clean data and write to outputfolder")
-
-    final_data = df_list.drop_duplicates()
-    final_data.to_csv(os.path.join(output_folder_path,
-                      'finaldata.csv'), index=False)
-
-    logger.info("extract and save consumed filenames")
-    # FUTURE: consider also save the path and output to .json
-
-    file_names = [os.path.basename(path) for path in datasets]
-
+    file_list = [os.path.basename(filepath) for filepath in datasets]
 
     with open(os.path.join(output_folder_path, 'ingestedfiles.txt'), "w") as f:
-        for element in file_names:
-            f.write(element + "\n")
+        for file in file_list:
+            f.write(file + "\n")
 
 
 if __name__ == '__main__':
     merge_multiple_dataframe()
-    logger.info("Data Ingestion Done\n")
