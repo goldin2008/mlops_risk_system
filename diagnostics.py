@@ -137,9 +137,12 @@ def outdated_packages_list():
                                   stderr=subprocess.PIPE,
                                   shell=True,
                                   encoding='utf-8')
+    # print('dependencies: ', type(dependencies))
     # print('dependencies: ', dependencies)
+
+    # sys.exit()
+
     dep = dependencies.stdout
-    # print('dep: ', dep)
     dep = dep.translate(str.maketrans('', '', ' \t\r'))
     dep = dep.split('\n')
     dep = [dep[3]] + dep[5:-3]

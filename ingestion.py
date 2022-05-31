@@ -6,6 +6,7 @@ from datetime import datetime
 
 import logging
 import glob
+from config import DATA_PATH, OUTPUT_MODEL_PATH, TEST_DATA_PATH
 
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
@@ -34,6 +35,7 @@ def merge_multiple_dataframe():
     file_list = [os.path.basename(filepath) for filepath in datasets]
 
     with open(os.path.join(output_folder_path, 'ingestedfiles.txt'), "w") as f:
+        f.write(f"Ingestion date: {datetime.now().strftime('%d/%m/%Y %H:%M:%S')}\n")
         for file in file_list:
             f.write(file + "\n")
 

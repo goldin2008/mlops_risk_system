@@ -103,6 +103,7 @@ def generate_pdf_report():
 
         for line in file.readlines():
             text.textLine(line.strip('\n'))
+            print(line)
 
         pdf.drawText(text)
 
