@@ -9,6 +9,8 @@ https://github.com/ibrahim-sheriff/Dynamic-Risk-Assessment-System
 
 https://github.com/goldin2008/mlops_risk_
 
+https://medium.com/analytics-vidhya/fundamentals-of-mlops-part-1-a-gentle-introduction-to-mlops-1b184d2c32a8
+
 ## Objective
 
 - To create, deploy, and monitor a risk assessment ML model that will estimate the attrition risk of each of the company's 10,000 clients. 
