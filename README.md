@@ -11,6 +11,30 @@ https://github.com/goldin2008/mlops_risk_
 
 https://medium.com/analytics-vidhya/fundamentals-of-mlops-part-1-a-gentle-introduction-to-mlops-1b184d2c32a8
 
+https://mti-lab.github.io/blog/2021/03/03/dvc.html
+
+https://nbviewer.org/gist/tezansahu/f034faf9a86856f8d8859556a5ecf12c
+
+https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/
+
+https://github.com/dssg/aequitas/blob/master/docs/source/examples/compas_demo.ipynb
+
+http://aequitas.dssg.io/
+
+https://www.snorkel.org/blog/slicing
+
+https://pythonbasics.org/flask-http-methods/
+
+https://technologyadvice.com/blog/information-technology/how-to-use-an-api/
+
+https://www.sqlshack.com/create-rest-apis-in-python-using-flask/
+
+https://steelkiwi.medium.com/flask-vs-django-how-to-understand-whether-you-need-a-hammer-or-a-toolbox-39b8b3a2e4a5
+
+https://pusher.com/tutorials/understanding-rest-api/
+
+https://superuser.com/questions/949428/whats-the-difference-between-127-0-0-1-and-0-0-0-0/949522#949522
+
 ## Objective
 
 - To create, deploy, and monitor a risk assessment ML model that will estimate the attrition risk of each of the company's 10,000 clients. 
