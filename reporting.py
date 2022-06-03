@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import json
 import os
+import sys
 import diagnostics
 from sklearn import metrics
 import logging
@@ -210,5 +211,6 @@ def generate_pdf_report():
 if __name__ == '__main__':
     logger.info("Generating confusion matrix")
     plot_confusion_matrix()
+    sys.exit()
     logger.info("Generating PDF report")
     generate_pdf_report()
